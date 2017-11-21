@@ -16,6 +16,9 @@ package ru.kutu.grind.config {
 		public var haltOnError:Boolean = false;
 		public var javascriptCallbackFunction:String;
 		public var enableStageVideo:Boolean = true;
+        public static var enableControlBar:Boolean = false;
+        public static var enableDblClick:Boolean = false;
+        public static var enableKeyPress:Boolean = false;
 
 	}
 

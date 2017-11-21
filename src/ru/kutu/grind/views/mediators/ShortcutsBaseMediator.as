@@ -46,7 +46,8 @@ package ru.kutu.grind.views.mediators {
 				streamType == StreamType.RECORDED ||
 				(streamType == StreamType.DVR && !(media.getTrait(MediaTraitType.DVR) as DVRTrait).isRecording)
 			) {
-				if (player.playing) {
+                if (!PlayerConfiguration.enableControlBar) {
+                } else if (player.playing) {
 					if (player.canPause)
 						player.pause();
 				} else if (player.canPlay) {
@@ -54,6 +55,8 @@ package ru.kutu.grind.views.mediators {
 				}
 			}
 			
+            if (!PlayerConfiguration.enableDblClick)
+                return;
 			// dblClick => fullscreen
 			if (!isNaN(dblClickTime) && getTimer() - dblClickTime < 500) {
 				dblClickTime = NaN;
@@ -64,6 +67,8 @@ package ru.kutu.grind.views.mediators {
 		}
 		
 		protected function onKeyDown(event:KeyboardEvent):void {
+            if (!PlayerConfiguration.enableKeyPress)
+                return;
 			switch (event.keyCode) {
 				// volume up
 				case Keyboard.UP:
@@ -108,6 +113,8 @@ package ru.kutu.grind.views.mediators {
 		}
 		
 		protected function onKeyUp(event:KeyboardEvent):void {
+            if (!PlayerConfiguration.enableKeyPress)
+                return;
 			var l:LayoutMetadata;
 			
 			switch (event.keyCode) {
