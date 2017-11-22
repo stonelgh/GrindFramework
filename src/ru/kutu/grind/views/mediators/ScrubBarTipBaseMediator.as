@@ -1,6 +1,6 @@
 package ru.kutu.grind.views.mediators {
 	
-	import by.blooddy.crypto.serialization.JSON;
+	import by.blooddy.crypto.serialization.*;
 	
 	import flash.events.Event;
 	import flash.geom.Point;
@@ -54,7 +54,7 @@ package ru.kutu.grind.views.mediators {
 			var thumbnailsJson:String = media.resource.getMetadataValue(Thumbnails.NAMESPACE) as String;
 			if (thumbnailsJson) {
 				try {
-					var data:Object = JSON.decode(thumbnailsJson);
+					var data:Object = by.blooddy.crypto.serialization.JSON.decode(thumbnailsJson);
 				} catch(error:Error) {}
 			}
 			
